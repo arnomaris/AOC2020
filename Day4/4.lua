@@ -42,7 +42,6 @@ local eyeColors = {
 
 function stripFind(str, field) -- this is extremely ugly
     local stripped = string.match(str, field .. ":(%S+)")
-    print(stripped)
     if not stripped then return false end
     if field == 'byr' then
         local result = tonumber(string.sub(stripped, 1, 4))
@@ -81,7 +80,6 @@ function stripFind(str, field) -- this is extremely ugly
             return false
         end
     elseif field == 'pid' then
-        print(#stripped)
         if #stripped == 9 then
             return tonumber(stripped)
         else
@@ -104,9 +102,6 @@ local function validatePassports(passports)
             else
                 if not stripFind(str, v) then
                     strictMatches = false
-                    print(v, false)
-                else
-                    print(v, true)
                 end
             end
         end
